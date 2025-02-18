@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Consumption Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Energy Consumption Tracker</h1>
+    </header>
+
+    <main>
+        <section class="input-form">
+            <h2>Enter Your Energy Usage</h2>
+            <form id="energyForm">
+                <label for="appliance">Appliance Name:</label>
+                <input type="text" id="appliance" required><br><br>
+
+                <label for="hoursUsed">Hours Used per Day:</label>
+                <input type="number" id="hoursUsed" required><br><br>
+
+                <label for="powerRating">Power Rating (in kW):</label>
+                <input type="number" id="powerRating" required><br><br>
+
+                <button type="submit">Add Appliance</button>
+            </form>
+        </section>
+
+        <section class="result">
+            <h2>Total Energy Consumption</h2>
+            <p id="totalConsumption">Total Consumption: 0 kWh</p>
+            <canvas id="energyChart"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>Track your energy usage and save more!</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

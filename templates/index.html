@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Energy Saver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <h1>Smart Home Energy Saver</h1>
+        <p>Track your energy consumption and save money with real-time insights</p>
+        <div class="header-buttons">
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Real-Time Monitoring</h2>
+            <p>Track energy usage in real-time with detailed appliance breakdowns.</p>
+        </div>
+        <div class="feature">
+            <h2>Graphical Insights</h2>
+            <p>Visualize energy consumption trends with interactive graphs.</p>
+        </div>
+        <div class="feature">
+            <h2>Smart Suggestions</h2>
+            <p>Get energy-saving tips based on your consumption data.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for a sustainable future.</p>
+    </footer>
+</body>
+</html>
