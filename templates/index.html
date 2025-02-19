@@ -3,36 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Home Energy Saver</title>
+    <title>Eco-Friendly Home Assistant</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <header class="header">
-        <h1>Smart Home Energy Saver</h1>
-        <p>Track your energy consumption and save money with real-time insights</p>
-        <div class="header-buttons">
-            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
-            <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+    <nav class="navbar">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="navbar-brand">EcoHome</a>
+            <div class="nav-links">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Dashboard</a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+                {% endif %}
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <section class="features">
-        <div class="feature">
-            <h2>Real-Time Monitoring</h2>
-            <p>Track energy usage in real-time with detailed appliance breakdowns.</p>
-        </div>
-        <div class="feature">
-            <h2>Graphical Insights</h2>
-            <p>Visualize energy consumption trends with interactive graphs.</p>
-        </div>
-        <div class="feature">
-            <h2>Smart Suggestions</h2>
-            <p>Get energy-saving tips based on your consumption data.</p>
-        </div>
-    </section>
+    <main class="hero-section">
+        <div class="container">
+            <h1>Welcome to EcoHome Assistant</h1>
+            <p class="lead">Track, optimize, and reduce your home energy consumption</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Track Energy Usage</h3>
+                    <p>Monitor your daily energy consumption with detailed analytics</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Reduce Carbon Footprint</h3>
+                    <p>Calculate and minimize your environmental impact</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Save Money</h3>
+                    <p>Get personalized tips to reduce your energy bills</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Join Community</h3>
+                    <p>Share and learn from other eco-conscious users</p>
+                </div>
+            </div>
 
-    <footer>
-        <p>Made with ❤️ for a sustainable future.</p>
+            {% if not current_user.is_authenticated %}
+                <div class="cta-section">
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-large">Get Started</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary btn-large">Login</a>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 EcoHome Assistant. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

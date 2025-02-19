@@ -3,44 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Consumption Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dashboard - EcoHome Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="navbar-brand">EcoHome</a>
+            <div class="nav-links">
+                <span class="user-info">Welcome, {{ current_user.username }}</span>
+                <span class="eco-points">{{ current_user.eco_points }} Points</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+            </div>
+        </div>
+    </nav>
 
-    <header>
-        <h1>Energy Consumption Tracker</h1>
-    </header>
+    <div class="dashboard-container">
+        <div class="dashboard-grid">
+            <!-- Energy Usage Chart -->
+            <div class="card">
+                <div class="card-title">Energy Usage</div>
+                <div class="chart-container">
+                    <canvas id="energyChart"></canvas>
+                </div>
+                <button class="btn btn-primary" onclick="logNewUsage()">Log Usage</button>
+            </div>
 
-    <main>
-        <section class="input-form">
-            <h2>Enter Your Energy Usage</h2>
-            <form id="energyForm">
-                <label for="appliance">Appliance Name:</label>
-                <input type="text" id="appliance" required><br><br>
+            <!-- Carbon Footprint -->
+            <div class="card">
+                <div class="card-title">Carbon Footprint</div>
+                <div id="carbonFootprint">
+                    <div class="carbon-stats">
+                        <h3>Monthly Average</h3>
+                        <p class="carbon-value">{{ carbon_average if carbon_average else '0' }} kg CO2</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateFootprint()">Calculate</button>
+                </div>
+            </div>
 
-                <label for="hoursUsed">Hours Used per Day:</label>
-                <input type="number" id="hoursUsed" required><br><br>
+            <!-- Energy Saving Tips -->
+            <div class="card">
+                <div class="card-title">Energy Saving Tips</div>
+                <div class="tips-container">
+                    {% for tip in tips %}
+                    <div class="tip-card">
+                        <p>{{ tip.tip_content }}</p>
+                        <div class="tip-meta">
+                            <span>By {{ tip.username }}</span>
+                            <span>{{ tip.likes }} likes</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
 
-                <label for="powerRating">Power Rating (in kW):</label>
-                <input type="number" id="powerRating" required><br><br>
+            <!-- Leaderboard -->
+            <div class="card">
+                <div class="card-title">Top Energy Savers</div>
+                <div class="leaderboard">
+                    {% for user in leaderboard %}
+                    <div class="leaderboard-item">
+                        <span class="rank">{{ loop.index }}</span>
+                        <span class="username">{{ user.username }}</span>
+                        <span class="points">{{ user.eco_points }} pts</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <button type="submit">Add Appliance</button>
-            </form>
-        </section>
-
-        <section class="result">
-            <h2>Total Energy Consumption</h2>
-            <p id="totalConsumption">Total Consumption: 0 kWh</p>
-            <canvas id="energyChart"></canvas>
-        </section>
-    </main>
-
-    <footer>
-        <p>Track your energy usage and save more!</p>
-    </footer>
-
-    <script src="app.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>
