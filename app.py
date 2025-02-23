@@ -1,178 +1,177 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-import os
-from database import init_db, get_db, get_user_by_email
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import logging
 from datetime import datetime
 
 app = Flask(__name__)
-app.config.update(
-    SECRET_KEY=os.getenv('SECRET_KEY', 'your-secret-key-here'),
-    MYSQL_HOST=os.getenv('MYSQL_HOST', 'localhost'),
-    MYSQL_USER=os.getenv('MYSQL_USER', 'root'),
-    MYSQL_PASSWORD=os.getenv('MYSQL_PASSWORD', '123456'),
-    MYSQL_DB=os.getenv('MYSQL_DB', 'energy_saver'),
-    MYSQL_CURSORCLASS='DictCursor'
-)
 
-# Initialize extensions
-init_db(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+# Configure logging
+logging.basicConfig(filename='app.log', level=logging.INFO)
 
-class User(UserMixin):
-    def __init__(self, user_data):
-        self.id = user_data['id']
-        self.username = user_data['username']
-        self.email = user_data['email']
-        self.eco_points = user_data.get('eco_points', 0)
+app.secret_key = 'your_secret_key'
 
-@login_manager.user_loader
-def load_user(user_id):
-    mysql = get_db()
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
-    user = cur.fetchone()
-    cur.close()
-    return User(user) if user else None
+# Database configuration
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '123456'  # Your MySQL password
+app.config['MYSQL_DB'] = 'energy_saver'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-# Routes
+mysql = MySQL(app)
+
+# Event logging function
+def log_event(event_type, description, user_id=None):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    user_info = f"User ID: {user_id}" if user_id else "Anonymous"
+    logging.info(f"{timestamp} - {event_type} - {description} - {user_info}")
+
 @app.route('/')
-def home():
+def index():
+    # First page showing welcome message with login/register buttons
     return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        # Get form data
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        
+        # Create cursor
+        cur = mysql.connection.cursor()
+        
         try:
-            username = request.form['username']
-            email = request.form['email']
-            password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+            # Check if email already exists
+            cur.execute('SELECT * FROM users WHERE email = %s', (email,))
+            account = cur.fetchone()
             
-            mysql = get_db()
-            cur = mysql.connection.cursor()
-            
-            # Check if email exists
-            if get_user_by_email(email):
-                flash('Email already registered', 'danger')
-                return redirect(url_for('register'))
-            
-            # Insert new user
-            cur.execute(
-                "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
-                (username, email, password)
-            )
-            mysql.connection.commit()
-            cur.close()
-            
-            flash('Registration successful! Please log in.', 'success')
-            return redirect(url_for('login'))
-            
+            if account:
+                flash('Email already exists!', 'danger')
+            else:
+                # Insert new user
+                cur.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)", 
+                          (username, email, password))
+                mysql.connection.commit()
+                flash('Registration successful! Please login.', 'success')
+                return redirect(url_for('login'))
+                
         except Exception as e:
-            flash(f'Registration failed: {str(e)}', 'danger')
+            flash('Registration failed!', 'danger')
+            print(f"Error: {e}")
+        finally:
+            cur.close()
             
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        # Get form data
         email = request.form['email']
         password = request.form['password']
         
-        user = get_user_by_email(email)
-        
-        if user and bcrypt.check_password_hash(user['password'], password):
-            user_obj = User(user)
-            login_user(user_obj)
-            return redirect(url_for('dashboard'))
-            
-        flash('Invalid email or password', 'danger')
-    
-    return render_template('login.html')
-
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    mysql = get_db()
-    cur = mysql.connection.cursor()
-    
-    # Get user's energy usage data
-    cur.execute("""
-        SELECT DATE(date) as date, power_usage 
-        FROM energy_usage 
-        WHERE user_id = %s 
-        ORDER BY date DESC 
-        LIMIT 30
-    """, (current_user.id,))
-    energy_data = cur.fetchall()
-    
-    # Get energy saving tips
-    cur.execute("""
-        SELECT t.*, u.username, COUNT(l.id) as likes
-        FROM energy_tips t
-        LEFT JOIN users u ON t.user_id = u.id
-        LEFT JOIN tip_likes l ON t.id = l.tip_id
-        GROUP BY t.id
-        ORDER BY likes DESC
-        LIMIT 5
-    """)
-    tips = cur.fetchall()
-    
-    # Get leaderboard
-    cur.execute("""
-        SELECT username, eco_points 
-        FROM users 
-        ORDER BY eco_points DESC 
-        LIMIT 5
-    """)
-    leaderboard = cur.fetchall()
-    
-    cur.close()
-    
-    return render_template('dashboard.html',
-                         energy_data=energy_data,
-                         tips=tips,
-                         leaderboard=leaderboard)
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('home'))
-
-@app.route('/api/energy-usage', methods=['POST'])
-@login_required
-def log_energy_usage():
-    if not request.is_json:
-        return jsonify({'error': 'Missing JSON'}), 400
-        
-    data = request.get_json()
-    
-    appliance = data.get('appliance')
-    power_usage = data.get('power_usage')
-    usage_time = data.get('usage_time')
-
-    if not all([appliance, power_usage, usage_time]):
-        return jsonify({'error': 'Missing required fields'}), 400
-        
-    try:
-        mysql = get_db()
+        # Create cursor
         cur = mysql.connection.cursor()
         
-        # Log energy usage
-        cur.execute(
-            "INSERT INTO energy_usage (user_id, appliance, power_usage, usage_time, date) VALUES (%s, %s, %s, %s, NOW())",
-            (current_user.id, appliance, power_usage, usage_time)
-        )
-        
-        mysql.connection.commit()
-        cur.close()
-        
-        return jsonify({'message': 'Energy usage logged successfully'}), 201
-        
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        try:
+            # Get user by email and password
+            cur.execute('SELECT * FROM users WHERE email = %s AND password = %s', (email, password))
+            account = cur.fetchone()
+            
+            if account:
+                # Create session data
+                session['loggedin'] = True
+                session['id'] = account['id']
+                session['username'] = account['username']
+                flash('Login successful!', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Invalid email/password!', 'danger')
+                
+        except Exception as e:
+            flash('Login failed!', 'danger')
+            print(f"Error: {e}")
+        finally:
+            cur.close()
+            
+    return render_template('login.html')
+
+@app.route('/home')
+def home():
+    # Check if user is logged in
+    if 'loggedin' not in session:
+        return redirect(url_for('login'))
+    
+    return render_template('home.html', username=session['username'])
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('index'))
+
+@app.route('/weather-tips')
+def weather_tips():
+    if 'loggedin' not in session:
+        return redirect(url_for('login'))
+    return render_template('weather_tips.html', username=session['username'])
+
+# Test cases function
+def run_tests():
+    tests = [
+        {
+            'name': 'Valid Login Test',
+            'email': 'test@test.com',
+            'password': 'test123',
+            'expected': 'success'
+        },
+        {
+            'name': 'Invalid Login Test',
+            'email': 'wrong@test.com',
+            'password': 'wrong123',
+            'expected': 'failure'
+        },
+        {
+            'name': 'Empty Fields Test',
+            'email': '',
+            'password': '',
+            'expected': 'failure'
+        }
+    ]
+    
+    results = []
+    for test in tests:
+        try:
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            cursor.execute('SELECT * FROM users WHERE email = %s AND password = %s', 
+                         (test['email'], test['password']))
+            account = cursor.fetchone()
+            cursor.close()
+            
+            result = 'success' if account else 'failure'
+            passed = result == test['expected']
+            results.append({
+                'test_name': test['name'],
+                'passed': passed,
+                'expected': test['expected'],
+                'actual': result
+            })
+            
+        except Exception as e:
+            results.append({
+                'test_name': test['name'],
+                'passed': False,
+                'error': str(e)
+            })
+    
+    return results
 
 if __name__ == '__main__':
+    # Run tests before starting the application
+    test_results = run_tests()
+    for result in test_results:
+        log_event('TEST', f"Test: {result['test_name']} - Passed: {result['passed']}")
+    
     app.run(debug=True)
