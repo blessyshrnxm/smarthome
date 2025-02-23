@@ -1,133 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather-Based Energy Optimization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Tips - Smart Home Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #f0f8ff;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0e4ff, #f3e5f5);
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
 
+        /* Navbar Styling */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #1a237e;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .navbar a:hover {
+            color: #ffd700 !important;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
             color: white;
-            z-index: 1000;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .card {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 60px 0;
             text-align: center;
-            max-width: 400px;
-            width: 100%;
-            margin-top: 80px;
+        }
+
+        .hero-section h1 span {
+            color: #ffd700;
+        }
+
+        /* Weather Card */
+        .weather-section {
+            padding: 40px 0;
+        }
+
+        .weather-card {
+            background: linear-gradient(to right, #ffffff, #f3e5f5);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(142, 68, 173, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .weather-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 12px rgba(142, 68, 173, 0.2);
         }
 
         .weather-icon {
-            font-size: 48px;
-            margin: 10px 0;
+            font-size: 64px;
+            margin: 20px 0;
         }
 
         .temperature {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: bold;
-            margin: 10px 0;
-            color: #333;
+            color: #6a11cb;
+            margin: 20px 0;
         }
 
         .conditions {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #555;
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         .suggestion {
-            background-color: #e3f2fd;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 1rem;
-            color: #1e88e5;
+            background: linear-gradient(to right, #e0e4ff, #f3e5f5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            color: #6a11cb;
         }
 
-        .btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: white;
+        /* Tips Cards */
+        .tip-card {
+            background: linear-gradient(to right, #ffffff, #f3e5f5);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(142, 68, 173, 0.1);
+            transition: transform 0.3s ease-in-out;
+            padding: 25px;
+            height: 100%;
+            margin-bottom: 20px;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 12px rgba(142, 68, 173, 0.2);
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(142, 68, 173, 0.6);
+            transition: all 0.3s ease-in-out;
+            color: white;
+            padding: 10px 25px;
         }
 
-        .btn:hover {
-            background-color: #43a047;
+        .btn-custom:hover {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            box-shadow: 0px 6px 15px rgba(142, 68, 173, 0.8);
+            transform: scale(1.1);
         }
 
-        .logout-btn {
-            background-color: #dc3545;
-        }
-
-        .logout-btn:hover {
-            background-color: #c82333;
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="welcome-text">Welcome, {{ username }}!</div>
-        <div class="nav-links">
-            <a href="{{ url_for('home') }}">Dashboard</a>
-            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    <!-- Navigation Bar -->
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Smart Home Management</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link text-white" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-link text-white" href="{{ url_for('weather_tips') }}">Weather Tips</a>
+            <a class="nav-link text-white" href="{{ url_for('energy_calculator') }}">Energy Calculator</a>
+            <a class="btn btn-custom ms-2" href="{{ url_for('logout') }}">Logout</a>
         </div>
-    </nav>
-
-    <div class="card">
-        <h2>Weather-Based Energy Tips</h2>
-        <div class="weather-icon" id="weatherIcon">☀</div>
-        <div class="temperature" id="temperature">25°C</div>
-        <div class="conditions" id="conditions">Sunny</div>
-        <div class="suggestion" id="suggestion">Use natural lighting; turn off indoor lights.</div>
-        <button class="btn" onclick="generateWeather()">Refresh Weather</button>
     </div>
+</nav>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Weather-Based <span>Energy Tips</span></h1>
+            <p class="lead">Optimize your energy usage based on current weather conditions</p>
+        </div>
+    </header>
+
+    <!-- Weather Section -->
+    <section class="weather-section">
+        <div class="container">
+            <div class="weather-card">
+                <div class="weather-icon" id="weatherIcon">☀</div>
+                <div class="temperature" id="temperature">25°C</div>
+                <div class="conditions" id="conditions">Sunny</div>
+                <div class="suggestion" id="suggestion">Use natural lighting; turn off indoor lights.</div>
+                <button class="btn btn-custom" onclick="generateWeather()">Refresh Weather</button>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="tip-card">
+                        <h3 class="text-success">Daily Tips</h3>
+                        <p>Adjust your thermostat based on weather conditions to maximize efficiency.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tip-card">
+                        <h3 class="text-primary">Seasonal Advice</h3>
+                        <p>Prepare your home for upcoming weather changes and save energy.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tip-card">
+                        <h3 class="text-danger">Energy Alerts</h3>
+                        <p>Get notified about weather-related energy saving opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Smart Home Management | Designed by Team</p>
+    </footer>
 
     <script>
         const weatherData = [
@@ -147,8 +212,9 @@
             document.getElementById("suggestion").textContent = randomWeather.tip;
         }
 
-        // Initialize with random weather on load
         window.onload = generateWeather;
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

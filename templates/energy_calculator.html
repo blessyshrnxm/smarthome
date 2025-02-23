@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Calculator - Smart Home Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0e4ff, #f3e5f5);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .navbar a:hover {
+            color: #ffd700 !important;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-section h1 span {
+            color: #ffd700;
+        }
+
+        /* Calculator Container */
+        .calculator-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(142, 68, 173, 0.1);
+            padding: 30px;
+            margin: 40px auto;
+            transition: transform 0.3s ease;
+            max-width: 1000px;
+        }
+
+        .calculator-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(142, 68, 173, 0.2);
+        }
+
+        /* Form Controls */
+        .form-control {
+            border: 2px solid #e0e4ff;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
+        }
+
+        /* Button Styling */
+        .btn-custom {
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            border: none;
+            box-shadow: 0px 4px 10px rgba(142, 68, 173, 0.6);
+            transition: all 0.3s ease-in-out;
+            color: white;
+            padding: 12px 30px;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            box-shadow: 0px 6px 15px rgba(142, 68, 173, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* Chart Container */
+        canvas {
+            max-width: 550px;
+            margin: auto;
+        }
+
+        /* Result Box */
+        .result-box {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(to right, #e0e4ff, #f3e5f5);
+            border-radius: 10px;
+            color: #6a11cb;
+        }
+
+        /* Alert Styling */
+        .alert {
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Smart Home Management</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link text-white" href="{{ url_for('home') }}">Home</a>
+                <a class="nav-link text-white" href="{{ url_for('weather_tips') }}">Weather Tips</a>
+                <a class="nav-link text-white" href="{{ url_for('energy_calculator') }}">Energy Calculator</a>
+                <a class="btn btn-custom ms-2" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Energy Usage <span>Calculator</span></h1>
+            <p class="lead">Track and analyze your energy consumption patterns</p>
+        </div>
+    </header>
+
+    <!-- Calculator Section -->
+    <div class="container calculator-container">
+        <h2 class="text-center mb-4">Real-Time Energy Usage Analysis</h2>
+        <p class="text-center mb-4">Enter energy usage (in kWh) for different appliances:</p>
+        
+        <form id="energyForm" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Lighting:</label>
+                <input type="number" class="form-control" id="lighting" placeholder="Enter kWh" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Heating:</label>
+                <input type="number" class="form-control" id="heating" placeholder="Enter kWh" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Cooling:</label>
+                <input type="number" class="form-control" id="cooling" placeholder="Enter kWh" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Appliances:</label>
+                <input type="number" class="form-control" id="appliances" placeholder="Enter kWh" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Cost per kWh (₹):</label>
+                <input type="number" class="form-control" id="costPerKWh" placeholder="Enter cost" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Set Monthly Budget (kWh):</label>
+                <input type="number" class="form-control" id="budget" placeholder="Enter budget" required>
+            </div>
+            <div class="col-12 text-center mt-4">
+                <button type="button" class="btn btn-custom" onclick="generateChartAndCost()">Calculate & Generate Chart</button>
+            </div>
+        </form>
+
+        <div class="text-center mt-5">
+            <canvas id="energyChart"></canvas>
+        </div>
+        <div id="totalCost" class="result-box d-none"></div>
+        <div id="budgetAlert" class="alert d-none"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Smart Home Management | Designed by Team</p>
+    </footer>
+
+    <script>
+        function generateChartAndCost() {
+            const lighting = parseFloat(document.getElementById('lighting').value) || 0;
+            const heating = parseFloat(document.getElementById('heating').value) || 0;
+            const cooling = parseFloat(document.getElementById('cooling').value) || 0;
+            const appliances = parseFloat(document.getElementById('appliances').value) || 0;
+            const costPerKWh = parseFloat(document.getElementById('costPerKWh').value) || 0;
+            const budget = parseFloat(document.getElementById('budget').value) || 0;
+
+            const totalEnergy = lighting + heating + cooling + appliances;
+            const totalCost = totalEnergy * costPerKWh;
+
+            document.getElementById('totalCost').textContent = `Total Energy Cost: ₹${totalCost.toFixed(2)}`;
+            document.getElementById('totalCost').classList.remove('d-none');
+
+            const budgetAlert = document.getElementById('budgetAlert');
+            if (totalEnergy > budget) {
+                budgetAlert.textContent = `⚠ Warning: You have exceeded your budget of ${budget} kWh!`;
+                budgetAlert.className = "alert alert-danger";
+            } else if (totalEnergy >= 0.8 * budget) {
+                budgetAlert.textContent = `⚠ Alert: You are nearing your budget limit (${budget} kWh).`;
+                budgetAlert.className = "alert alert-warning";
+            } else {
+                budgetAlert.textContent = `✅ You are within your budget of ${budget} kWh.`;
+                budgetAlert.className = "alert alert-success";
+            }
+            budgetAlert.classList.remove('d-none');
+
+            const ctx = document.getElementById('energyChart').getContext('2d');
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+
+            window.myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Lighting', 'Heating', 'Cooling', 'Appliances'],
+                    datasets: [{
+                        data: [lighting, heating, cooling, appliances],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

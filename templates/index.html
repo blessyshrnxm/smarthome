@@ -3,16 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - Energy Saver</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Smart Home Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0e4ff, #f3e5f5);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .navbar a:hover {
+            color: #ffd700 !important;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 span {
+            color: #ffd700;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            border: none;
+            box-shadow: 0px 4px 10px rgba(142, 68, 173, 0.6);
+            transition: all 0.3s ease-in-out;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(to right, #8e44ad, #9b59b6);
+            box-shadow: 0px 6px 15px rgba(142, 68, 173, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px 0;
+            background: white;
+        }
+
+        .feature-box {
+            background: linear-gradient(to right, #ffffff, #f3e5f5);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(142, 68, 173, 0.1);
+            transition: transform 0.3s ease-in-out;
+            padding: 20px;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 12px rgba(142, 68, 173, 0.2);
+        }
+
+        .feature-box h3 {
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Energy Saver</h1>
-        <div class="button-group">
-            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
-            <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Smart Home Management</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link text-white" href="{{ url_for('login') }}">Login</a>
+                <a class="btn btn-custom ms-2" href="{{ url_for('register') }}">Register</a>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Welcome to <span>Smart Home Management</span></h1>
+            <p class="lead">Track and optimize your home energy usage efficiently</p>
+            <div class="mt-4">
+                <a href="{{ url_for('login') }}" class="btn btn-lg btn-custom me-3">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-lg btn-outline-light">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Why Choose Us?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <h3 class="text-success">Energy Tracking</h3>
+                        <p>Monitor and manage your home's energy usage in real-time.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <h3 class="text-primary">Cost Savings</h3>
+                        <p>Get smart recommendations to reduce electricity bills.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <h3 class="text-danger">Sustainability</h3>
+                        <p>Adopt eco-friendly habits and reduce your carbon footprint.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Smart Home Management | Designed by Team</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

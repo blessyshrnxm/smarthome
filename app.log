@@ -508,3 +508,282 @@ INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:36:40] "GET /home HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:37:13] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:37:14] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:37:16] "GET /weather-tips HTTP/1.1" 200 -
+INFO:root:2025-02-24 00:43:59 - TEST - Test: Valid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 00:43:59 - TEST - Test: Invalid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 00:43:59 - TEST - Test: Empty Fields Test - Passed: False - Anonymous
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:root:2025-02-24 00:43:59 - TEST - Test: Valid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 00:43:59 - TEST - Test: Invalid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 00:43:59 - TEST - Test: Empty Fields Test - Passed: False - Anonymous
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 118-427-130
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:44:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:44:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:44:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:44:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:44:41] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:44:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:54:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:54:37] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:54:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:54:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:54:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:55:51] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:55:56] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:56:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:56:04] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:56:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:56:08] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:57:48] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:58:12] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:58:15] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:58:21] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:58:31] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:58:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:20] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:25] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:28] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:34] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:42] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:51] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:53] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 00:59:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:04] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:13] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:17] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:56] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:02:58] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:03:26] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:04:40] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:04:48] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:06:01] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:06:02] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:09:58] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:12] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:17] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:30] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:31] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:37] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:10:39] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:06] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:10] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:10] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:12] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:14] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:20] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:23] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:50] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:54] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:11:54] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:15:43] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:15:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:16:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:17:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:17:41] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:17:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:17:44] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:19:21] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:19:23] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:20:17] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:20:19] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:22:47] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:22:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:23:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:23:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:23:21] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:23:28] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:23:30] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:25:53] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:26:32] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:26:34] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:26:36] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:47] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:49] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:55] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:55] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:55] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:56] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=fEPOp2RgjF1xAKLL0Iov HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:56] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:28:57] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:29:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:29:17] "GET /static/css/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:29:33] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:32:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:13] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:48] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:55] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:33:59] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:34:00] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:34:01] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:34:25] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:34:27] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:34:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:00] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:04] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:08] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:09] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:10] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:35:13] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:37] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:39] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:43] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:43] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:43] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:43] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png&s=fEPOp2RgjF1xAKLL0Iov HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:36:45] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:11] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:11] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:11] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:11] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png&s=fEPOp2RgjF1xAKLL0Iov HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:11] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:37:30] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:01] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:07] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:20] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:27] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:38:34] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:39:44] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:39:48] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:39:49] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:42:52] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:42:54] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:43:57] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:44:25] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:44:27] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:44:29] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:44:30] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:44:31] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:45:00] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:45:35] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:45:37] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:46:26] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:46:41] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:46:42] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:46:43] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:46:45] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:46:47] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:48:16] "[35m[1mGET /weather-tips HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:48:16] "GET /weather-tips?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:48:16] "GET /weather-tips?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:48:17] "GET /weather-tips?__debugger__=yes&cmd=resource&f=console.png&s=Q6sUs9Zadkna7VIkLhUW HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:48:17] "GET /weather-tips?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'G:\\smarthome\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:2025-02-24 01:49:03 - TEST - Test: Valid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:03 - TEST - Test: Invalid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:03 - TEST - Test: Empty Fields Test - Passed: False - Anonymous
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Detected change in 'G:\\smarthome\\app.py', reloading
+INFO:werkzeug: * Debugger PIN: 118-427-130
+INFO:root:2025-02-24 01:49:03 - TEST - Test: Valid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:03 - TEST - Test: Invalid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:03 - TEST - Test: Empty Fields Test - Passed: False - Anonymous
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 356-035-220
+INFO:werkzeug: * Detected change in 'G:\\smarthome\\app.py', reloading
+INFO:werkzeug: * Detected change in 'G:\\smarthome\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:2025-02-24 01:49:05 - TEST - Test: Valid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:05 - TEST - Test: Invalid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:05 - TEST - Test: Empty Fields Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:05 - TEST - Test: Valid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:05 - TEST - Test: Invalid Login Test - Passed: False - Anonymous
+INFO:root:2025-02-24 01:49:05 - TEST - Test: Empty Fields Test - Passed: False - Anonymous
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 118-427-130
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 356-035-220
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:06] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:09] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:29] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:30] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:31] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:33] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:50:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:51:19] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:51:32] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:51:32] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:51:45] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:51:59] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:52:26] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:52:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:52:49] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:52:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:52:53] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:52:56] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:12] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:19] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:21] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:55:23] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:56:55] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:16] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:22] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:22] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:25] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:29] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:30] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:57:33] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:58:31] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:58:32] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:58:33] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:59:16] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:59:20] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:59:29] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:59:40] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 01:59:43] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:00:23] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:00:26] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:00:42] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:00:42] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:00:47] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:00:54] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:01:31] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:01:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:01:39] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:05:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:05:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:05:46] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:05:53] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:14] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:23] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:30] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:31] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:06:46] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:02] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:04] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:05] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:08] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:12] "GET /energy_calculator HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:16] "GET /weather-tips HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:20] "GET /home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 02:07:26] "GET /home HTTP/1.1" 200 -

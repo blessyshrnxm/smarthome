@@ -118,6 +118,12 @@ def weather_tips():
         return redirect(url_for('login'))
     return render_template('weather_tips.html', username=session['username'])
 
+@app.route('/energy_calculator')
+def energy_calculator():
+    if 'loggedin' not in session:
+        return redirect(url_for('login'))
+    return render_template('energy_calculator.html', username=session['username'])
+
 # Test cases function
 def run_tests():
     tests = [
