@@ -198,57 +198,78 @@
 
     <script>
         function generateChartAndCost() {
-            const lighting = parseFloat(document.getElementById('lighting').value) || 0;
-            const heating = parseFloat(document.getElementById('heating').value) || 0;
-            const cooling = parseFloat(document.getElementById('cooling').value) || 0;
-            const appliances = parseFloat(document.getElementById('appliances').value) || 0;
-            const costPerKWh = parseFloat(document.getElementById('costPerKWh').value) || 0;
-            const budget = parseFloat(document.getElementById('budget').value) || 0;
+    const lighting = parseFloat(document.getElementById('lighting').value) || 0;
+    const heating = parseFloat(document.getElementById('heating').value) || 0;
+    const cooling = parseFloat(document.getElementById('cooling').value) || 0;
+    const appliances = parseFloat(document.getElementById('appliances').value) || 0;
+    const costPerKWh = parseFloat(document.getElementById('costPerKWh').value) || 0;
+    const budget = parseFloat(document.getElementById('budget').value) || 0;
 
-            const totalEnergy = lighting + heating + cooling + appliances;
-            const totalCost = totalEnergy * costPerKWh;
+    const totalEnergy = lighting + heating + cooling + appliances;
+    const totalCost = totalEnergy * costPerKWh;
 
-            document.getElementById('totalCost').textContent = `Total Energy Cost: ₹${totalCost.toFixed(2)}`;
-            document.getElementById('totalCost').classList.remove('d-none');
+    // Display results
+    document.getElementById('totalCost').textContent = `Total Energy Cost: ₹${totalCost.toFixed(2)}`;
+    document.getElementById('totalCost').classList.remove('d-none');
 
-            const budgetAlert = document.getElementById('budgetAlert');
-            if (totalEnergy > budget) {
-                budgetAlert.textContent = `⚠ Warning: You have exceeded your budget of ${budget} kWh!`;
-                budgetAlert.className = "alert alert-danger";
-            } else if (totalEnergy >= 0.8 * budget) {
-                budgetAlert.textContent = `⚠ Alert: You are nearing your budget limit (${budget} kWh).`;
-                budgetAlert.className = "alert alert-warning";
-            } else {
-                budgetAlert.textContent = `✅ You are within your budget of ${budget} kWh.`;
-                budgetAlert.className = "alert alert-success";
-            }
-            budgetAlert.classList.remove('d-none');
+    // Update budget alert
+    const budgetAlert = document.getElementById('budgetAlert');
+    if (totalEnergy > budget) {
+        budgetAlert.textContent = `⚠ Warning: You have exceeded your budget of ${budget} kWh!`;
+        budgetAlert.className = "alert alert-danger";
+    } else if (totalEnergy >= 0.8 * budget) {
+        budgetAlert.textContent = `⚠ Alert: You are nearing your budget limit (${budget} kWh).`;
+        budgetAlert.className = "alert alert-warning";
+    } else {
+        budgetAlert.textContent = `✅ You are within your budget of ${budget} kWh.`;
+        budgetAlert.className = "alert alert-success";
+    }
+    budgetAlert.classList.remove('d-none');
 
-            const ctx = document.getElementById('energyChart').getContext('2d');
-            if (window.myChart) {
-                window.myChart.destroy();
-            }
+    // Create/update chart
+    const ctx = document.getElementById('energyChart').getContext('2d');
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
 
-            window.myChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Lighting', 'Heating', 'Cooling', 'Appliances'],
-                    datasets: [{
-                        data: [lighting, heating, cooling, appliances],
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
+    window.myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Lighting', 'Heating', 'Cooling', 'Appliances'],
+            datasets: [{
+                data: [lighting, heating, cooling, appliances],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
         }
+    });
+
+    // Save to database
+    const formData = new FormData();
+    formData.append('lighting', lighting);
+    formData.append('heating', heating);
+    formData.append('cooling', cooling);
+    formData.append('appliances', appliances);
+    formData.append('costPerKWh', costPerKWh);
+    formData.append('budget', budget);
+
+    fetch('/energy_calculator', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        console.log('Data saved successfully');
+    })
+    .catch(error => {
+        console.error('Error saving data:', error);
+    });
+}
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

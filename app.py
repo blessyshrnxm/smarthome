@@ -118,10 +118,38 @@ def weather_tips():
         return redirect(url_for('login'))
     return render_template('weather_tips.html', username=session['username'])
 
-@app.route('/energy_calculator')
+@app.route('/energy_calculator', methods=['GET', 'POST'])
 def energy_calculator():
     if 'loggedin' not in session:
         return redirect(url_for('login'))
+    
+    if request.method == 'POST':
+        try:
+            # Get data from the form
+            lighting = float(request.form['lighting'])
+            heating = float(request.form['heating'])
+            cooling = float(request.form['cooling'])
+            appliances = float(request.form['appliances'])
+            total_energy = lighting + heating + cooling + appliances
+            total_cost = total_energy * float(request.form['costPerKWh'])
+            budget = float(request.form['budget'])
+            
+            # Insert into database
+            cursor = mysql.connection.cursor()
+            cursor.execute("""
+                INSERT INTO energy_calculations 
+                (user_id, lighting, heating, cooling, appliances, total_energy, total_cost, budget) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                """, (session['id'], lighting, heating, cooling, appliances, total_energy, total_cost, budget))
+            mysql.connection.commit()
+            cursor.close()
+            
+            return "Success"
+            
+        except Exception as e:
+            print(f"Error: {e}")
+            return str(e), 400
+            
     return render_template('energy_calculator.html', username=session['username'])
 
 # Test cases function
